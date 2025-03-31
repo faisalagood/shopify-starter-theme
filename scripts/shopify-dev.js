@@ -1,6 +1,5 @@
 import "dotenv/config";
 import { exec } from "child_process";
-import path from "path";
 
 const store = process.env.SHOPIFY_STORE;
 
