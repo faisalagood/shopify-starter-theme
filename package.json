@@ -1,0 +1,27 @@
+{
+  "type": "module",
+  "scripts": {
+    "shopify:dev": "node scripts/shopify-dev.js",
+    "vite:build": "vite build",
+    "watch": "vite build --watch",
+    "build": "npm run vite:build",
+    "dev": "concurrently \"npm:watch\" \"npm:shopify:dev\"",
+    "format": "prettier --write \"**/*.{js,ts,json,liquid,css}\"",
+    "lint": "prettier --check \"**/*.{js,ts,json,liquid,css}\"",
+    "clean": "rm -f assets/application.css assets/main.js assets/main-*.js assets/*.css.map assets/*.js.map"
+  },
+  "devDependencies": {
+    "@shopify/prettier-plugin-liquid": "^1.9.0",
+    "@tailwindcss/vite": "^4.0.17",
+    "@types/node": "^22.13.14",
+    "autoprefixer": "^10.4.21",
+    "concurrently": "^9.1.2",
+    "dotenv": "^16.4.7",
+    "postcss": "^8.5.3",
+    "prettier": "^3.5.3",
+    "prettier-plugin-tailwindcss": "^0.6.11",
+    "tailwindcss": "^4.0.17",
+    "typescript": "^5.8.2",
+    "vite": "^6.2.4"
+  }
+}

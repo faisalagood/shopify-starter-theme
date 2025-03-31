@@ -1,0 +1,43 @@
+<div>
+  <h1>{{ collection.title }}</h1>
+  {% if collection.description != blank %}
+    <div>{{ collection.description }}</div>
+  {% endif %}
+
+  <h2>Products</h2>
+
+  {% comment %} Start pagination here {% endcomment %}
+  {% paginate collection.products by 12 %}
+    {% if collection.products.size > 0 %}
+      <ul>
+        {% for product in collection.products %}
+          <li>
+            <a href="{{ product.url }}">{{ product.title }}</a>
+          </li>
+        {% endfor %}
+      </ul>
+    {% else %}
+      <p>No products found in this collection.</p>
+    {% endif %}
+
+    {% comment %} Pagination controls must be INSIDE the paginate block {% endcomment %}
+    {% if paginate.pages > 1 %}
+      <div>
+        {{ paginate | default_pagination }}
+      </div>
+    {% endif %}
+    {% comment %} End pagination here {% endcomment %}
+  {% endpaginate %}
+</div>
+
+{% schema %}
+{
+  "name": "Main Collection",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Default"
+    }
+  ]
+}
+{% endschema %}

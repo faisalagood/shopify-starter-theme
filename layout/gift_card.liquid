@@ -1,0 +1,35 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+      {{ shop.name }}
+      Gift Card
+    </title>
+    {{ content_for_header }}
+    <style>
+      .gift-card {
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 20px;
+        text-align: center;
+        font-family: sans-serif;
+      }
+      .gift-card__amount {
+        font-size: 24px;
+        font-weight: bold;
+        margin: 20px 0;
+      }
+      .gift-card__number {
+        margin: 20px 0;
+      }
+      .gift-card__qr-code {
+        margin: 20px 0;
+      }
+    </style>
+  </head>
+  <body>
+    {{ content_for_layout }}
+  </body>
+</html>

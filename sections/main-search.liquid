@@ -1,0 +1,52 @@
+<div>
+  <h1>Search</h1>
+
+  <form action="{{ routes.search_url }}" method="get" role="search">
+    <input
+      type="search"
+      name="q"
+      value="{{ search.terms | escape }}"
+      placeholder="Search..."
+    >
+    <button type="submit">Search</button>
+  </form>
+
+  {% if search.performed %}
+    <h2>
+      {% if search.results_count > 0 %}
+        Results for "{{ search.terms | escape }}"
+      {% else %}
+        No results found for "{{ search.terms | escape }}"
+      {% endif %}
+    </h2>
+
+    {% comment %} Start pagination here {% endcomment %}
+    {% paginate search.results by 10 %}
+      {% if search.results_count > 0 %}
+        <ul>
+          {% for item in search.results %}
+            <li>
+              <a href="{{ item.url }}">{{ item.title }}</a>
+              {% comment %} You could add item.object_type, price, etc. {% endcomment %}
+            </li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+
+      {% comment %} Pagination controls must be INSIDE the paginate block {% endcomment %}
+      {% if paginate.pages > 1 %}
+        <div>
+          {{ paginate | default_pagination }}
+        </div>
+      {% endif %}
+      {% comment %} End pagination here {% endcomment %}
+    {% endpaginate %}
+  {% endif %}
+</div>
+
+{% schema %}
+{
+  "name": "Main Search",
+  "settings": []
+}
+{% endschema %}

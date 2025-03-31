@@ -1,0 +1,31 @@
+{% layout 'gift_card' %}
+
+<div class="gift-card">
+  <h1>{{ shop.name }} Gift Card</h1>
+
+  <div class="gift-card__details">
+    <div class="gift-card__amount">
+      {{ gift_card.initial_value | money_with_currency }}
+    </div>
+
+    {% if gift_card.balance != gift_card.initial_value %}
+      <div class="gift-card__balance">{{ gift_card.balance | money }} remaining</div>
+    {% endif %}
+
+    <div class="gift-card__number">
+      {{ gift_card.code | format_code }}
+    </div>
+
+    <div class="gift-card__qr-code">
+      {{ qrcode_tag(gift_card.qr_identifier) }}
+    </div>
+
+    <div class="gift-card__expires">
+      {% if gift_card.expired %}
+        Expired on {{ gift_card.expires_on | date: '%d/%m/%y' }}
+      {% elsif gift_card.expires_on %}
+        Expires on {{ gift_card.expires_on | date: '%d/%m/%y' }}
+      {% endif %}
+    </div>
+  </div>
+</div>

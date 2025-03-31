@@ -1,0 +1,3 @@
+console.log("Vite + Tailwind + TypeScript Shopify Theme Starter Initialized!");
+
+// Add your TypeScript code here...

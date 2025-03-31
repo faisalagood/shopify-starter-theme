@@ -1,0 +1,24 @@
+# Dependencies
+node_modules/
+
+# Environment Variables
+.env*
+!.env.example
+
+# Build Output / Generated Files
+assets/application.css
+assets/main.js
+assets/main-*.js
+assets/*.css.map
+assets/*.js.map
+
+# Vite cache
+.vite/
+
+# MacOS
+.DS_Store
+
+# Optional: Log files
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*

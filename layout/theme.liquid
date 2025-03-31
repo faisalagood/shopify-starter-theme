@@ -1,0 +1,24 @@
+<!doctype html>
+  <html lang="{{ request.locale.iso_code }}">
+    <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta name="description" content="{{ page_description | escape }}">
+      <link rel="canonical" href="{{ canonical_url }}">
+      <title>{{ page_title }}</title>
+  
+      {{ 'application.css' | asset_url | stylesheet_tag }}
+  
+      {{ content_for_header }}
+    </head>
+    <body>
+      {% render 'header' %}
+      <main>
+        {{ content_for_layout }}
+      </main>
+      {% render 'footer' %}
+  
+      <script src="{{ 'main.js' | asset_url }}" defer="defer" type="module"></script>
+    </body>
+  </html>
+  
